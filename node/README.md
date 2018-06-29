@@ -3,6 +3,13 @@
 - **`express-parse`** - NPM Package containing the APIs and binary.
 - **`math-grammar`** - Example implementation
 
+# TODOs
+
+- Values should be represented as Buffers
+- Bug exists that allows Tokens to indicate they're satisfied even when they only contain partials of their expected matches
+- Handle whitespace
+	- Implementation: Pass *everything* to Token; if it kicks it back and that character is whitespace, continue ignoring all characters until we find a non-whitespace, and then start on the next token.
+
 # Setup
 
 **Tools:**
@@ -33,16 +40,16 @@ yarn test
 You should get something like this for the input `5+5/8`:
 ```json
 {
-	type: 'MATHSTMT',
-	tokens: [
-		{ type: 'DIGIT', value: '5' },
-		{ type: 'MATHOP', value: '+' },
+	"type": "MATHSTMT",
+	"tokens": [
+		{ "type": "DIGIT", "value": "5" },
+		{ "type": "MATHOP", "value": "+" },
 		{
-			type: 'MATHSTMT',
-			tokens: [
-				{ type: 'DIGIT', value: '5' },
-				{ type: 'MATHOP', value: '/' },
-				{ type: 'DIGIT', value: '8' }
+			"type": "MATHSTMT",
+			"tokens": [
+				{ "type": "DIGIT", "value": "5" },
+				{ "type": "MATHOP", "value": "/" },
+				{ "type": "DIGIT", "value": "8" }
 			]
 		}
 	]
