@@ -25,9 +25,28 @@ cd ../math-grammar
 yarn
 yarn build
 ```
-3. Compile the example source
+3. Test compiling the example source
 ```
 yarn test
+```
+
+You should get something like this for the input `5+5/8`:
+```json
+{
+	type: 'MATHSTMT',
+	tokens: [
+		{ type: 'DIGIT', value: '5' },
+		{ type: 'MATHOP', value: '+' },
+		{
+			type: 'MATHSTMT',
+			tokens: [
+				{ type: 'DIGIT', value: '5' },
+				{ type: 'MATHOP', value: '/' },
+				{ type: 'DIGIT', value: '8' }
+			]
+		}
+	]
+}
 ```
 
 # Edit and Test
@@ -51,3 +70,31 @@ rm -rf yarn.lock node_modules && yarn cache clean && yarn && yarn start
 ```
 yarn start
 ```
+
+# Using `express-parse`
+
+## APIs
+
+The following are exported from the `express-parse` module:
+- **`default`** `function` - Executes lexer, passes to a tree reducer, and returns the resulting tree.
+- **`lexer`** `function` - Executes lexer and returns the raw collectors and tokens (rarely necessary; just use `default()`)
+- **`Collector`** `class` - Base class for all collectors
+- **`Token`** `class` - Base class for all tokens
+
+## Collectors
+
+> **NOTICE:** This section needs to be expanded.
+
+To create a collector, extend the exported `Collector` class and set the `type` and `expected` static variables.
+
+- **`type`** `string` - Represents the collector name even after it's reduced
+- **`expected`** `array<array<Token||Collector>>` - Array of arrays containing tokens and collectors. This defines your expected tokens and collectors to be parsed. The first dimension defines the individual possible streams, while the second dimension defines each token or collector that is expected for that stream.
+
+## Tokens
+
+> **NOTICE:** This section needs to be expanded.
+
+To create a token, extend the exported `Token` class and set the `type` and `expected` static variables.
+
+- **`type`** `string` - Represents the token name even after it's reduced
+- **`expected`** `array<string||RegExp>` - Array containing the possible expected values for this particular token. Each can either be a string or a Regular Expression.

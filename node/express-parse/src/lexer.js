@@ -40,4 +40,6 @@ function lexer(src, curI, CollectorClass, parent = false) {
 	return collector;
 }
 
+export { lexer };
+
 export default (...args) => reduceTree(lexer(...args));
