@@ -1,4 +1,4 @@
-import Collector from '../classes/collector';
+import { Collector } from 'express-parse';
 import DigitToken from './digit';
 import MathOpToken from './mathOp';
 

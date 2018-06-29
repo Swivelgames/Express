@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "yargs": "^12.0.1"
+  },
+  "name": "express-parse",
+  "version": "0.0.1",
+  "files": [
+    "bin.js", "yarn.lock", "index.js", "lib/*"
+  ],
+  "bin": {
+    "express-parse": "./bin.js"
+  },
+  "description": "Node-based ExpressLang Parser",
+  "main": "index.js",
+  "repository": "git@github.com:Swivelgames/Express.git",
+  "author": "Joseph Dalrymple <swivelgames@gmail.com>",
+  "license": "GPLv3",
+  "publishConfig": {
+    "registry": "http://localhost:4873/"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-cli": "^6.26.0"
+  }
+}

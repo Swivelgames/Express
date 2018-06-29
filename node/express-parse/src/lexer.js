@@ -1,3 +1,4 @@
+import reduceTree from './reduce-tree.js';
 import Collector from './classes/collector';
 
 function lexer(src, curI, CollectorClass, parent = false) {
@@ -39,4 +40,4 @@ function lexer(src, curI, CollectorClass, parent = false) {
 	return collector;
 }
 
-export default lexer;
+export default (...args) => reduceTree(lexer(...args));

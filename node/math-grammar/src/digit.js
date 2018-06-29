@@ -1,4 +1,4 @@
-import Token from '../classes/token';
+import { Token } from 'express-parse';
 
 export default class DigitToken extends Token {
 	static type = 'DIGIT';

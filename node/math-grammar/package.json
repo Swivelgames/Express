@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "express-parse": "0.0.1"
+  },
+  "name": "express-math-grammar-test",
+  "version": "0.0.1",
+  "author": "Joseph Dalrymple <swivelgames@gmail.com>",
+  "license": "GPLv3",
+  "private": true,
+  "scripts": {
+    "build": "babel src --out-dir grammar",
+    "start": "yarn build && yarn test",
+    "test": "express-parse -g grammar -f example.expr -s mathstmt"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-cli": "^6.26.0"
+  }
+}
